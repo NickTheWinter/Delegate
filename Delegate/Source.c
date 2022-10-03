@@ -35,6 +35,7 @@ int Amp(int a, int b)
 {
 	return a * b;
 }
+//Метод удаляющий повторения
 void RemoveRepeating(delegat d)
 {
 	for (size_t i = 0; i <= n; i++)
@@ -45,6 +46,8 @@ void RemoveRepeating(delegat d)
 		}
 	}
 }
+//Метод смещающий элементы делегата на 1 влево с уменьшением размерности делегата
+//Нужен только для того, чтобы не дублировать код
 void ElemOffset(delegat d, size_t i)
 {
 	for (size_t j = i; j < n - 1; j++)
@@ -55,6 +58,7 @@ void ElemOffset(delegat d, size_t i)
 	n--;
 	d = (delegat)realloc(d, n * sizeof(f));
 }
+//Метод удаляющий функцию
 void RemoveFunc(delegat d, f func)
 {
 	for (size_t i = 0; i < n; i++)
@@ -66,12 +70,14 @@ void RemoveFunc(delegat d, f func)
 		}
 	}
 }
+//Метод добавляющий функцию
 void AddFunc(delegat d, f func)
 {
 	n++;
 	d = (delegat)realloc(d, n * sizeof(f));
 	d[n - 1] = func;
 }
+//Выполнить все функции в делегате с заданными параметрами
 void ExecFuncs(delegat d, int a, int b)
 {
 	for (size_t i = 0; i < n; i++)
